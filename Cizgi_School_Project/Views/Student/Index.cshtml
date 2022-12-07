@@ -1,0 +1,33 @@
+﻿@model List<Cizgi_School_Project.Models.TblStudent>
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <h1>Mvc Student Project</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Görsel</th>
+            <th>Ad</th>
+            <th>Soyadı</th>
+            <th>Sil</th>
+        </tr>
+
+        @foreach(var item in Model)
+        {
+             <tr>
+                 <td>@item.StudentID</td>
+                 <td><img src="@item.Image" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%; "></td>
+                 <td>@item.Name</td>
+                 <td>@item.Surname</td>
+                 <td><a href="/Student/DeleteStudent/@item.StudentID/" class="btn btn-danger">Sil</a></td>
+                 <td><a href="/Student/DeleteStudent/@item.StudentID/" class="btn btn-success">Güncelle</a></td>
+             </tr>   
+        }
+
+    </table>
+    <a href="/Student/AddStudent/" class="btn btn-primary">Yeni Öğrenci Kaydı</a>
+
+</div>
