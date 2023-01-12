@@ -38,5 +38,28 @@ namespace Cizgi_School_Project.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult UpdateStudent(int id)
+        {
+            var values = db.TblStudent.Find(id);
+            return View(values);
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateStudent(TblStudent p)
+        {
+            var values = db.TblStudent.Find(p.StudentID);
+            values.Name = p.Name;
+            values.Surname = p.Surname;
+            values.Mail = p.Mail;
+            values.Image = p.Image;
+            values.Number = p.Number;
+            values.PhoneNumber = p.PhoneNumber;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
